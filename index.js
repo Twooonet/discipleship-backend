@@ -12,10 +12,7 @@ const feedbackRouter = require('./routes/feedback');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : '*',
-  credentials: true,
-}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
