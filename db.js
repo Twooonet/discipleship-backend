@@ -49,6 +49,24 @@ async function initDb() {
       content TEXT NOT NULL,
       created_at TIMESTAMP DEFAULT NOW()
     );
+
+    CREATE TABLE IF NOT EXISTS albums (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      description TEXT,
+      cover_url TEXT,
+      created_by VARCHAR(100),
+      created_at TIMESTAMP DEFAULT NOW()
+    );
+
+    CREATE TABLE IF NOT EXISTS photos (
+      id SERIAL PRIMARY KEY,
+      album_id INTEGER REFERENCES albums(id) ON DELETE CASCADE,
+      photo_url TEXT NOT NULL,
+      caption TEXT,
+      uploaded_by VARCHAR(100),
+      created_at TIMESTAMP DEFAULT NOW()
+    );
   `);
   console.log('Database initialized');
 }

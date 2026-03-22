@@ -8,6 +8,7 @@ const threadsRouter = require('./routes/threads');
 const calendarRouter = require('./routes/calendar');
 const offeringsRouter = require('./routes/offerings');
 const feedbackRouter = require('./routes/feedback');
+const photosRouter = require('./routes/photos');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,6 +21,7 @@ app.use('/api/threads', threadsRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/offerings', offeringsRouter);
 app.use('/api/feedback', feedbackRouter);
+app.use('/api/photos', photosRouter);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
